@@ -9,7 +9,7 @@ SDK de exemplo para manipulação de API disponível
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
-  <h3 align="center">Exemplo de Implementação da HotAPI em PHP</h3>
+  <h3 align="center">Exemplo de Implementação da HotAPI em PHP 5.6 acima</h3>
 
   <p align="center">
     Este exemplo visa exemplificar implementação da API disponível no site:
