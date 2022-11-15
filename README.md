@@ -32,7 +32,7 @@ MENU DISPONÍVEL:
 * Disconectar
 * Ajustar Webhook
 * Enviar mensagem de Texto
-* Enviar mensagem com butões
+* Enviar mensagem com botões
 * Enviar mensagem com lista de opções
 * Enviar mensagem com localização
 * Enviar mensagem com imagem
