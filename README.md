@@ -1,5 +1,5 @@
-# hotapi-sdk-php
-SDK de exemplo para manipulação de API disponível
+# hotapi-php-example
+Exemplos para manipulação de API disponível
 
 
 
@@ -9,7 +9,7 @@ SDK de exemplo para manipulação de API disponível
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
-  <h3 align="center">Exemplo de Implementação da HotAPI em PHP 5.6 acima</h3>
+  <h3 align="center">Exemplo de Implementação da HotAPI em PHP</h3>
 
   <p align="center">
     Este exemplo visa exemplificar implementação da API disponível no site:
@@ -23,24 +23,28 @@ SDK de exemplo para manipulação de API disponível
 <!-- ABOUT THE PROJECT -->
 ## Informações sobre o Projeto
 
-<a href="https://www.hotapi.com.br"><strong>www.hotapi.com.br</strong></a>
 
-There are many great README templates available on GitHub; however, I didn't find one that really suited my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need -- I think this is it.
+Ultilize esse exemplo e controle todos os métodos disponíveis na HotAPI. Sendo possível controle, envio e recebimento de mensagens com Whatsapp.
 
-Here's why:
-* Your time should be focused on creating something amazing. A project that solves a problem and helps others
-* You shouldn't be doing the same tasks over and over like creating a README from scratch
-* You should implement DRY principles to the rest of your life :smile:
+MENU DISPONÍVEL:
+* Conectar
+* Status
+* Disconectar
+* Ajustar Webhook
+* Enviar mensagem de Texto
+* Enviar mensagem com butões
+* Enviar mensagem com lista de opções
+* Enviar mensagem com localização
+* Enviar mensagem com imagem
+* Enviar mensagem com vídeo
+* Enviar mensagem com vídeo
+* Enviar mensagem com áudio
+* Enviar mensagem com documento
 
-Of course, no one template will serve all projects since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue. Thanks to all the people have contributed to expanding this template!
+Verifique no link abaixo toda a documentação disponível no link abaixo, a documentação permite implementação da API no formato backend.
 
-Use the `BLANK_README.md` to get started.
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<a href="https://documenter.getpostman.com/view/24152443/2s8YeoNDJd"><strong>https://documenter.getpostman.com/view/24152443/2s8YeoNDJd</strong></a>
 
 
 
-
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
