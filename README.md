@@ -41,6 +41,8 @@ MENU DISPONÍVEL:
 * Enviar mensagem com áudio
 * Enviar mensagem com documento
 
+Editar o arquivo: inc/globalVars.php incluindo a URL e as chaves de acesso para realizar a comunicação com a HotAPI.
+
 Verifique no link abaixo toda a documentação disponível no link abaixo, a documentação permite implementação da API no formato backend.
 
 <a href="https://documenter.getpostman.com/view/24152443/2s8YeoNDJd"><strong>https://documenter.getpostman.com/view/24152443/2s8YeoNDJd</strong></a>
