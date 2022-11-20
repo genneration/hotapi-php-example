@@ -38,25 +38,12 @@ input[type=submit]:hover {
   margin-bottom:50px;
 }
 </style>
-<h3>FORMULÁRIO DE ENVIO DE MENSAGEM COM ÁUDIO</h3>
+<h3>FORMULÁRIO PARA REMOVER/APAGAR GRUPO</h3>
 
 <div class="container">
-  <form action="?#ancoraResp" method="POST" enctype="multipart/form-data">  
-    <label for="fname">Número ( [CÓDIGO DO PAÍS]+[DDD]+[NÚMERO] )</label>
-    <input type="text" id="destination" name="destination" value="" placeholder="Informe o número">
-        
-    <hr>
-    <label for="fname">ENVIAR ARQUIVO POR BASE64</label><br>
-    <input type="file" name="audio_upload" id="audio_upload">
-    
-    <hr style="margin:30px 0;">
-    <div>Escolher o de cima BASE64 OU o URL abaixo. (*Para o teste, preencha um ou o outro)</div>
-    <hr style="margin:30px 0;">
-    <label for="fname">ENVIAR POR UM URL PÚBLICO</label>
-    <div>
-    Nome: <input type="text" style="width:30%;" id="audio_name" name="audio_name" value="" placeholder="Opcional">
-    - URL: <input type="text" style="width:50%;" id="audio_url" name="audio_url" value="https://file-examples.com/storage/fe04183d33637128a9c93a7/2017/11/file_example_MP3_1MG.mp3" placeholder="Enviar por uma URL">
-    </div>
+  <form action="?#ancoraResp" method="POST">  
+    <label for="fname">Identificador do grupo: whats_id retornado no webhook</label>
+    <input type="text" id="whats_id" name="whats_id" value="" placeholder="Informe o whats_id (retornado na criação do grupo pelo webhook)">
         
     <input type="submit" value="ENVIAR">
   </form>
@@ -97,7 +84,7 @@ input[type=submit]:hover {
 
 
 //POST PARA ENVIO DOS DADOS.................................................................................................................................................
-if(isset($_POST["destination"])){
+if(isset($_POST["whats_id"])){
 
 
 
@@ -108,43 +95,13 @@ if(isset($_POST["destination"])){
 
 
 //ENVIA POS PARA API........................................................................................
-$url_auth_api = VAR_INSTANCE_URL."/message";//URL DE POST PARA API E METODOS SELECIONADOS
+$url_auth_api = VAR_INSTANCE_URL."/group";//URL DE POST PARA API E METODOS SELECIONADOS
 $postParameter = array(//VARIÁVEIS POST DA REQUISICAO
     //"DEBUG"=>1,//se definir ele retorna uma variavel debug com as variaveis POST recebidas no servidor
     "fLogin"=>VAR_INSTANCE_LOGIN,
-    "ACTION"=>"AUDIO",
-	"destination"=>$_POST["destination"]
+    "ACTION"=>"DELETE",
+	"whats_id"=>$_POST["whats_id"]
 );
-
-
-
-
-
-
-//ADICIONAR O ARRAY URL PARA ENVIO..............................................
-if($_POST["audio_url"] != ""){
-	$postParameter["audio_name"] = $_POST["audio_name"];
-	$postParameter["audio_url"] = $_POST["audio_url"];
-	
-}else{//if($_POST["audio_url"] != ""){
-
-	//ADICIONAR O ARRAY ARQUIVO PARA MONTAGEM DO MASE64 PARA ENVIO..............................................
-	if(isset($_FILES['audio_upload'])){
-		$postParameter["audio_name"] = $_FILES['audio_upload']['name'];
-		$file_bin = file_get_contents($_FILES['audio_upload']['tmp_name']);
-		//verificar tipo de arquivo
-		$finfo = new finfo(FILEINFO_MIME_TYPE);
-		$file_type = $finfo->buffer($file_bin);//pega informação MIME
-		$postParameter["audio_base64"] = "data:".$file_type.";base64,".base64_encode($file_bin);
-	}//if(isset($_FILES['audio_url'])){
-
-
-}//else{//if($_POST["destination"] != ""){
-
-
-
-
-
 
 //url-ify the data for the POST..............................................................................
 $fields_string = http_build_query($postParameter);
@@ -209,20 +166,19 @@ if($arrayResponse["isValid"] == "true"){
 
 
 	//VERIFICA SE ESTÁ INATIVO, NÃO ESTÁ OPERANTE--------------------------------------------------------------------------------
-	if(isset($arrayResponse["result"]["message_id"])){
-		echo "<br> - ID DE CONTROLE DA MENSAGEM DE FILA: <b>".$arrayResponse["result"]["message_id"]."</b>";
+	if(isset($arrayResponse["result"]["group_id"])){
+		echo "<br> - ID DE CONTROLE DA CRIAÇÃO NA FILA: <b>".$arrayResponse["result"]["group_id"]."</b>";
 	}
 
 }//if($arrayResponse["isValid"] == "true"){
 ?>
    <div style="padding:20px;" id="ancoraResp"><input style="font-size:24px;" name="Atualizar" type="button" value="Limpar" onclick="window.location='?';" /></div>
-   
 <?php
 
 
 
 
-}//if(isset($_POST["destination"])){
+}//if(isset($_POST["whats_id"])){
 //POST PARA ENVIO DOS DADOS.................................................................................................................................................
 
 

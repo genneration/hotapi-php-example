@@ -123,9 +123,116 @@ echo VAR_INSTANCE_LOGIN;
 
 
 
+<hr style="margin-top:150px;">
+<h3>MÉTODOS DOS GRUPOS (/group)</h3>
+<div class="container">
+    <div class="fname">Criar novo grupo</div>
+    <input type="button" value="CREATE" onClick="window.location='group.create.php';">
+  </form>
+</div>
+<div class="container">
+    <div class="fname">Alterar nome do grupo</div>
+    <input type="button" value="UPDATE_NAME" onClick="window.location='group.update_name.php';">
+  </form>
+</div>
+<div class="container">
+    <div class="fname">Alterar descrição do grupo</div>
+    <input type="button" value="UPDATE_DESCRIPTION" onClick="window.location='group.update_description.php';">
+  </form>
+</div>
+
+<div class="container">
+    <div class="fname">Buscar informações do grupo (participantes e detalhes)</div>
+    <input type="button" value="METADATA" onClick="window.location='group.metadata.php';">
+  </form>
+</div>
+<div class="container">
+    <div class="fname">Criar convite do grupo</div>
+    <input type="button" value="INVITECODE" onClick="window.location='group.invitecode.php';">
+  </form>
+</div>
+<div class="container">
+    <div class="fname">Visualizar detalhes de um grupo através do código do convite</div>
+    <input type="button" value="INVITEINFO" onClick="window.location='group.inviteinfo.php';">
+  </form>
+</div>
+<div class="container">
+    <div class="fname">Aceitar convite para um grupo (entrar no grupo)</div>
+    <input type="button" value="ACCEPT_INVITE" onClick="window.location='group.accept_invite.php';">
+  </form>
+</div>
+<div class="container">
+    <div class="fname">Atualizar participantes de um grupo</div>
+    <input type="button" value="UPDATE_PARTICIPANTS" onClick="window.location='group.update_participants.php';">
+  </form>
+</div>
+<div class="container">
+    <div class="fname">Alterar configuração de um grupo</div>
+    <input type="button" value="UPDATE_SETTING" onClick="window.location='group.update_setting.php';">
+  </form>
+</div>
+<div class="container">
+    <div class="fname">Sair de um grupo</div>
+    <input type="button" value="EXIT" onClick="window.location='group.exit.php';">
+  </form>
+</div>
+<div class="container">
+    <div class="fname">Remover um grupo</div>
+    <input type="button" value="DELETE" onClick="window.location='group.delete.php';">
+  </form>
+</div>
 
 
 
+
+
+
+
+
+
+
+<hr style="margin-top:150px;">
+<h3>MÉTODOS DO PERFIL (/profile)</h3>
+<div class="container">
+    <div class="fname">Verificar se número está no whatsapp</div>
+    <input type="button" value="ONWHATSAPP" onClick="window.location='profile.onwhatsapp.php';">
+  </form>
+</div>
+<div class="container">
+    <div class="fname">Verificar informações de status de perfil</div>
+    <input type="button" value="STATUS" onClick="window.location='profile.status.php';">
+  </form>
+</div>
+<div class="container">
+    <div class="fname">Atualizar status do perfil do número conectado na instância (nome ou legenda de status)</div>
+    <input type="button" value="STATUS_UPDATE" onClick="window.location='profile.status_update.php';">
+  </form>
+</div>
+<div class="container">
+    <div class="fname">Obter a imagem de um perfil de usuário</div>
+    <input type="button" value="IMAGE_URL" onClick="window.location='profile.image_url.php';">
+  </form>
+</div>
+<div class="container">
+    <div class="fname">Bloquear um perfil</div>
+    <input type="button" value="BLOCKUSER" onClick="window.location='profile.blockuser.php';">
+  </form>
+</div>
+<div class="container">
+    <div class="fname">Desbloquear um perfil</div>
+    <input type="button" value="UNBLOCKUSER" onClick="window.location='profile.unblockuser.php';">
+  </form>
+</div>
+
+
+
+
+
+
+
+
+
+<div style="clear:both; height:300px;"></div>
 
 
 

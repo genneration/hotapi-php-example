@@ -41,7 +41,7 @@ input[type=submit]:hover {
 <h3>FORMULÁRIO DE ENVIO DE MENSAGEM COM LISTA DE OPÇÕES</h3>
 
 <div class="container">
-  <form action="?" method="POST">  
+  <form action="?#ancoraResp" method="POST">  
     <label for="fname">Número ( [CÓDIGO DO PAÍS]+[DDD]+[NÚMERO] )</label>
     <input type="text" id="destination" name="destination" value="" placeholder="Informe o número">
     
@@ -204,7 +204,7 @@ if($arrayResponse["isValid"] == "true"){
 
 }//if($arrayResponse["isValid"] == "true"){
 ?>
-   <div style="padding:20px;"><input style="font-size:24px;" name="Atualizar" type="button" value="Limpar" onclick="window.location='?';" /></div>
+   <div style="padding:20px;" id="ancoraResp"><input style="font-size:24px;" name="Atualizar" type="button" value="Limpar" onclick="window.location='?';" /></div>
 <?php
 
 
