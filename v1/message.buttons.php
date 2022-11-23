@@ -1,4 +1,4 @@
-<?php // Genneration - 01-11-2022
+<?php // Albert Faisher - faisher@gmail.com - 01-11-2022
 //INCLUDES DE CONTROLE --->>>
 include "inc/globalVars.php";//vars padrao
 //INCLUDES DE CONTROLE ---<<<
@@ -123,10 +123,10 @@ $postParameter = array(//VARIÁVEIS POST DA REQUISICAO
 
 //ADICIONAR O ARRAY DE BOTÕES RECEBIDOS PARA ENVIO...........................................................
 $ARRAY_BOTTONS = array();
-if((isset($_POST["botao1"])) and ($_POST["botao1"] != "")){ $ARRAY_BOTTONS[] = array("id"=>"1","labe"=>$_POST["botao1"]); }
-if((isset($_POST["botao2"])) and ($_POST["botao2"] != "")){ $ARRAY_BOTTONS[] = array("id"=>"2","labe"=>$_POST["botao2"]); }
-if((isset($_POST["botao3"])) and ($_POST["botao3"] != "")){ $ARRAY_BOTTONS[] = array("id"=>"3","labe"=>$_POST["botao3"]); }
-if((isset($_POST["botao4"])) and ($_POST["botao4"] != "")){ $ARRAY_BOTTONS[] = array("id"=>"4","labe"=>$_POST["botao4"]); }
+if((isset($_POST["botao1"])) and ($_POST["botao1"] != "")){ $ARRAY_BOTTONS[] = array("id"=>"1","label"=>$_POST["botao1"]); }
+if((isset($_POST["botao2"])) and ($_POST["botao2"] != "")){ $ARRAY_BOTTONS[] = array("id"=>"2","label"=>$_POST["botao2"]); }
+if((isset($_POST["botao3"])) and ($_POST["botao3"] != "")){ $ARRAY_BOTTONS[] = array("id"=>"3","label"=>$_POST["botao3"]); }
+if((isset($_POST["botao4"])) and ($_POST["botao4"] != "")){ $ARRAY_BOTTONS[] = array("id"=>"4","label"=>$_POST["botao4"]); }
 
 //ADICIONAR ARRAY DE BOTÕES NO ARRAR POST DE ENVIO...........................................................
 $postParameter["buttons"] = $ARRAY_BOTTONS;
@@ -171,7 +171,7 @@ echo "<br><br><br><b>STATUS DA REQUISIÇÃO:</b><pre>"; print_r($httpcode); echo
 
 
 //imprimir dados de resposta da API........................................................................................
-echo "<br><br><br><b>DADOS DE RESPOSTA DA REQUISIÇÃO:</b><pre>"; print_r($arrayResponse); echo "</pre>";
+echo "<br><br><br><b>DADOS DE RESPOSTA DA REQUISIÇÃO:</b><pre>"; print_r($curlResponse); echo "</pre>";
 
 
 
