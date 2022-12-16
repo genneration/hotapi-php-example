@@ -1,4 +1,4 @@
-<?php // Genneration - 01-11-2022
+<?php // Albert Faisher - faisher@gmail.com - 01-11-2022
 //INCLUDES DE CONTROLE --->>>
 include "inc/globalVars.php";//vars padrao
 //INCLUDES DE CONTROLE ---<<<
@@ -55,7 +55,7 @@ input[type=submit]:hover {
     <label for="fname">ENVIAR POR UM URL PÚBLICO</label>
     <div>
     Nome: <input type="text" style="width:30%;" id="audio_name" name="audio_name" value="" placeholder="Opcional">
-    - URL: <input type="text" style="width:50%;" id="audio_url" name="audio_url" value="https://file-examples.com/storage/fe04183d33637128a9c93a7/2017/11/file_example_MP3_1MG.mp3" placeholder="Enviar por uma URL">
+    - URL: <input type="text" style="width:50%;" id="audio_url" name="audio_url" value="https://filesamples.com/samples/audio/mp3/sample4.mp3" placeholder="Enviar por uma URL">
     </div>
         
     <input type="submit" value="ENVIAR">

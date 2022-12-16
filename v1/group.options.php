@@ -38,18 +38,39 @@ input[type=submit]:hover {
   margin-bottom:50px;
 }
 </style>
-<h3>FORMULÁRIO PARA REMOVER/APAGAR GRUPO</h3>
+<h3>FORMULÁRIO DE ENVIO DE MENSAGEM COM LISTA DE OPÇÕES</h3>
 
 <div class="container">
   <form action="?#ancoraResp" method="POST">  
-    <label for="fname">Identificador do grupo: whats_id retornado no webhook</label>
-    <input type="text" id="whats_id" name="whats_id" value="" placeholder="Informe o whats_id (retornado na criação do grupo pelo webhook)">
-        
+    <label for="fname">ID do grupo ( whats_id recebido na criação do grupo )</label>
+    <input type="text" id="destination" name="destination" value="" placeholder="Informe o whats_id do grupo">
+    
+    <label for="subject">Texto da mensagem</label>
+    <textarea id="text" name="text" placeholder="Definir a mensagem de texto.." style="height:200px"></textarea>
+    <label for="fname">Rodapé do texto (opcional)</label>
+    <input type="text" id="footer" name="footer" value="Rodapé teste" placeholder="Legenda do rodapé">
+    
+    <hr>
+    <label for="fname">TÍTULO PARA A LISTA</label>
+    <input type="text" id="optionsTitle" name="optionsTitle" value="LISTA DE EXEMPLO" placeholder="Título da lista">
+    
+    <label for="fname">Item 1</label>
+    <input type="text" id="options1" name="options1" value="ITEM 1" placeholder="Texto do item">
+    
+    <label for="fname">Item 2</label>
+    <input type="text" id="options2" name="options2" value="ITEM 2" placeholder="Texto do item">
+    
+    <label for="fname">Item 3</label>
+    <input type="text" id="options3" name="options3" value="ITEM 3" placeholder="Texto do item">
+    
+    <label for="fname">Item 4</label>
+    <input type="text" id="options4" name="options4" value="ITEM 4" placeholder="Texto do item">
+    
     <input type="submit" value="ENVIAR">
   </form>
 </div>
 
-<div style="padding:20px;"><input style="background-color: #F60; font-size:18px; color: white; padding: 12px 20px; border: none; border-radius: 4px; cursor: pointer; width:90%;" name="Voltar" type="button" value="Voltar ao MENU" onclick="window.location='MENU.php';" /></div>
+<div style="padding:20px;"><input style="background-color: #04AA6D; font-size:18px; color: white; padding: 12px 20px; border: none; border-radius: 4px; cursor: pointer; width:90%;" name="Voltar" type="button" value="Voltar ao MENU" onclick="window.location='MENU.php';" /></div>
 <?php
 
 
@@ -84,7 +105,7 @@ input[type=submit]:hover {
 
 
 //POST PARA ENVIO DOS DADOS.................................................................................................................................................
-if(isset($_POST["whats_id"])){
+if(isset($_POST["destination"])){
 
 
 
@@ -99,9 +120,23 @@ $url_auth_api = VAR_INSTANCE_URL."/group";//URL DE POST PARA API E METODOS SELEC
 $postParameter = array(//VARIÁVEIS POST DA REQUISICAO
     //"DEBUG"=>1,//se definir ele retorna uma variavel debug com as variaveis POST recebidas no servidor
     "fLogin"=>VAR_INSTANCE_LOGIN,
-    "ACTION"=>"DELETE",
-	"whats_id"=>$_POST["whats_id"]
+    "ACTION"=>"OPTIONS",
+	"destination"=>$_POST["destination"],
+	"text"=>$_POST["text"],
+	"footer"=>$_POST["footer"]//opcional
 );
+
+
+//ADICIONAR O ARRAY DE BOTÕES RECEBIDOS PARA ENVIO...........................................................
+$ARRAY_OPTIONS = array();
+if((isset($_POST["options1"])) and ($_POST["options1"] != "")){ $ARRAY_OPTIONS[] = array("id"=>"1","title"=>$_POST["options1"]); }
+if((isset($_POST["options2"])) and ($_POST["options2"] != "")){ $ARRAY_OPTIONS[] = array("id"=>"2","title"=>$_POST["options2"]); }
+if((isset($_POST["options3"])) and ($_POST["options3"] != "")){ $ARRAY_OPTIONS[] = array("id"=>"3","title"=>$_POST["options3"]); }
+if((isset($_POST["options4"])) and ($_POST["options4"] != "")){ $ARRAY_OPTIONS[] = array("id"=>"4","title"=>$_POST["options4"]); }
+
+//ADICIONAR ARRAY DE BOTÕES NO ARRAR POST DE ENVIO...........................................................
+$postParameter["optionsTitle"] = $_POST["optionsTitle"];
+$postParameter["options"] = $ARRAY_OPTIONS;
 
 //url-ify the data for the POST..............................................................................
 $fields_string = http_build_query($postParameter);
@@ -166,8 +201,8 @@ if($arrayResponse["isValid"] == "true"){
 
 
 	//VERIFICA SE ESTÁ INATIVO, NÃO ESTÁ OPERANTE--------------------------------------------------------------------------------
-	if(isset($arrayResponse["result"]["group_id"])){
-		echo "<br> - ID DE CONTROLE DA CRIAÇÃO NA FILA: <b>".$arrayResponse["result"]["group_id"]."</b>";
+	if(isset($arrayResponse["result"]["message_id"])){
+		echo "<br> - ID DE CONTROLE DA MENSAGEM DE FILA: <b>".$arrayResponse["result"]["message_id"]."</b>";
 	}
 
 }//if($arrayResponse["isValid"] == "true"){
@@ -178,7 +213,7 @@ if($arrayResponse["isValid"] == "true"){
 
 
 
-}//if(isset($_POST["whats_id"])){
+}//if(isset($_POST["destination"])){
 //POST PARA ENVIO DOS DADOS.................................................................................................................................................
 
 

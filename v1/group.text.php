@@ -38,13 +38,16 @@ input[type=submit]:hover {
   margin-bottom:50px;
 }
 </style>
-<h3>FORMULÁRIO PARA REMOVER/APAGAR GRUPO</h3>
+<h3>FORMULÁRIO DE ENVIO DE MENSAGEM SIMPLES DE TEXTO</h3>
 
 <div class="container">
   <form action="?#ancoraResp" method="POST">  
-    <label for="fname">Identificador do grupo: whats_id retornado no webhook</label>
-    <input type="text" id="whats_id" name="whats_id" value="" placeholder="Informe o whats_id (retornado na criação do grupo pelo webhook)">
-        
+    <label for="fname">ID do grupo ( whats_id recebido na criação do grupo )</label>
+    <input type="text" id="destination" name="destination" value="" placeholder="Informe o whats_id do grupo">
+    
+    <label for="subject">Texto da mensagem</label>
+    <textarea id="text" name="text" placeholder="Definir a mensagem de texto.." style="height:200px"></textarea>
+    
     <input type="submit" value="ENVIAR">
   </form>
 </div>
@@ -84,7 +87,7 @@ input[type=submit]:hover {
 
 
 //POST PARA ENVIO DOS DADOS.................................................................................................................................................
-if(isset($_POST["whats_id"])){
+if(isset($_POST["destination"])){
 
 
 
@@ -99,10 +102,10 @@ $url_auth_api = VAR_INSTANCE_URL."/group";//URL DE POST PARA API E METODOS SELEC
 $postParameter = array(//VARIÁVEIS POST DA REQUISICAO
     //"DEBUG"=>1,//se definir ele retorna uma variavel debug com as variaveis POST recebidas no servidor
     "fLogin"=>VAR_INSTANCE_LOGIN,
-    "ACTION"=>"DELETE",
-	"whats_id"=>$_POST["whats_id"]
+    "ACTION"=>"TEXT",
+	"destination"=>$_POST["destination"],
+	"text"=>$_POST["text"]
 );
-
 //url-ify the data for the POST..............................................................................
 $fields_string = http_build_query($postParameter);
 //INFORMAÇÕES DO cURL PHP >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -166,8 +169,8 @@ if($arrayResponse["isValid"] == "true"){
 
 
 	//VERIFICA SE ESTÁ INATIVO, NÃO ESTÁ OPERANTE--------------------------------------------------------------------------------
-	if(isset($arrayResponse["result"]["group_id"])){
-		echo "<br> - ID DE CONTROLE DA CRIAÇÃO NA FILA: <b>".$arrayResponse["result"]["group_id"]."</b>";
+	if(isset($arrayResponse["result"]["message_id"])){
+		echo "<br> - ID DE CONTROLE DA MENSAGEM DE FILA: <b>".$arrayResponse["result"]["message_id"]."</b>";
 	}
 
 }//if($arrayResponse["isValid"] == "true"){
@@ -178,7 +181,7 @@ if($arrayResponse["isValid"] == "true"){
 
 
 
-}//if(isset($_POST["whats_id"])){
+}//if(isset($_POST["destination"])){
 //POST PARA ENVIO DOS DADOS.................................................................................................................................................
 
 

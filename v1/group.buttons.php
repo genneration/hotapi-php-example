@@ -38,13 +38,31 @@ input[type=submit]:hover {
   margin-bottom:50px;
 }
 </style>
-<h3>FORMULÁRIO PARA REMOVER/APAGAR GRUPO</h3>
+<h3>FORMULÁRIO DE ENVIO DE MENSAGEM COM BOTÕES</h3>
 
 <div class="container">
   <form action="?#ancoraResp" method="POST">  
-    <label for="fname">Identificador do grupo: whats_id retornado no webhook</label>
-    <input type="text" id="whats_id" name="whats_id" value="" placeholder="Informe o whats_id (retornado na criação do grupo pelo webhook)">
-        
+    <label for="fname">ID do grupo ( whats_id recebido na criação do grupo )</label>
+    <input type="text" id="destination" name="destination" value="" placeholder="Informe o whats_id do grupo">
+    
+    <label for="subject">Texto da mensagem</label>
+    <textarea id="text" name="text" placeholder="Definir a mensagem de texto.." style="height:200px"></textarea>
+    <label for="fname">Rodapé do texto (opcional)</label>
+    <input type="text" id="footer" name="footer" value="Rodapé teste" placeholder="Legenda do rodapé">
+    
+    <hr />
+    <label for="fname">Botão 1</label>
+    <input type="text" id="botao1" name="botao1" value="BOTÃO 1" placeholder="Legenda do botão">
+    
+    <label for="fname">Botão 2</label>
+    <input type="text" id="botao2" name="botao2" value="BOTÃO 2" placeholder="Legenda do botão">
+    
+    <label for="fname">Botão 3</label>
+    <input type="text" id="botao3" name="botao3" value="BOTÃO 3" placeholder="Legenda do botão">
+    
+    <label for="fname">Botão 4</label>
+    <input type="text" id="botao4" name="botao4" value="BOTÃO 4" placeholder="Legenda do botão">
+    
     <input type="submit" value="ENVIAR">
   </form>
 </div>
@@ -84,7 +102,7 @@ input[type=submit]:hover {
 
 
 //POST PARA ENVIO DOS DADOS.................................................................................................................................................
-if(isset($_POST["whats_id"])){
+if(isset($_POST["destination"])){
 
 
 
@@ -99,10 +117,24 @@ $url_auth_api = VAR_INSTANCE_URL."/group";//URL DE POST PARA API E METODOS SELEC
 $postParameter = array(//VARIÁVEIS POST DA REQUISICAO
     //"DEBUG"=>1,//se definir ele retorna uma variavel debug com as variaveis POST recebidas no servidor
     "fLogin"=>VAR_INSTANCE_LOGIN,
-    "ACTION"=>"DELETE",
-	"whats_id"=>$_POST["whats_id"]
+    "ACTION"=>"BUTTONS",
+	"destination"=>$_POST["destination"],
+	"text"=>$_POST["text"],
+	"footer"=>$_POST["footer"]//opcional
 );
 
+
+//ADICIONAR O ARRAY DE BOTÕES RECEBIDOS PARA ENVIO...........................................................
+$ARRAY_BOTTONS = array();
+if((isset($_POST["botao1"])) and ($_POST["botao1"] != "")){ $ARRAY_BOTTONS[] = array("id"=>"1","label"=>$_POST["botao1"]); }
+if((isset($_POST["botao2"])) and ($_POST["botao2"] != "")){ $ARRAY_BOTTONS[] = array("id"=>"2","label"=>$_POST["botao2"]); }
+if((isset($_POST["botao3"])) and ($_POST["botao3"] != "")){ $ARRAY_BOTTONS[] = array("id"=>"3","label"=>$_POST["botao3"]); }
+if((isset($_POST["botao4"])) and ($_POST["botao4"] != "")){ $ARRAY_BOTTONS[] = array("id"=>"4","label"=>$_POST["botao4"]); }
+
+//ADICIONAR ARRAY DE BOTÕES NO ARRAR POST DE ENVIO...........................................................
+$postParameter["buttons"] = $ARRAY_BOTTONS;
+
+echo "<br><br><br><b>JSON postParameter:</b><pre>"; print_r(json_encode($postParameter)); echo "</pre>";
 //url-ify the data for the POST..............................................................................
 $fields_string = http_build_query($postParameter);
 //INFORMAÇÕES DO cURL PHP >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -166,8 +198,8 @@ if($arrayResponse["isValid"] == "true"){
 
 
 	//VERIFICA SE ESTÁ INATIVO, NÃO ESTÁ OPERANTE--------------------------------------------------------------------------------
-	if(isset($arrayResponse["result"]["group_id"])){
-		echo "<br> - ID DE CONTROLE DA CRIAÇÃO NA FILA: <b>".$arrayResponse["result"]["group_id"]."</b>";
+	if(isset($arrayResponse["result"]["message_id"])){
+		echo "<br> - ID DE CONTROLE DA MENSAGEM DE FILA: <b>".$arrayResponse["result"]["message_id"]."</b>";
 	}
 
 }//if($arrayResponse["isValid"] == "true"){
@@ -178,9 +210,8 @@ if($arrayResponse["isValid"] == "true"){
 
 
 
-}//if(isset($_POST["whats_id"])){
+}//if(isset($_POST["destination"])){
 //POST PARA ENVIO DOS DADOS.................................................................................................................................................
-
 
 
 

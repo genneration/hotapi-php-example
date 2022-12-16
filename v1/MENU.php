@@ -182,6 +182,47 @@ echo VAR_INSTANCE_LOGIN;
   </form>
 </div>
 
+<div class="container">
+    <div class="fname">Enviar mensagem de texto simples</div>
+    <input type="button" value="TEXT" onClick="window.location='group.text.php';">
+  </form>
+</div>
+<div class="container">
+    <div class="fname">Enviar mensagem com botões</div>
+    <input type="button" value="BUTTONS" onClick="window.location='group.buttons.php';">
+  </form>
+</div>
+<div class="container">
+    <div class="fname">Enviar mensagem com lista de opções</div>
+    <input type="button" value="OPTIONS" onClick="window.location='group.options.php';">
+  </form>
+</div>
+<div class="container">
+    <div class="fname">Enviar localização</div>
+    <input type="button" value="LOCATION" onClick="window.location='group.location.php';">
+  </form>
+</div>
+<div class="container">
+    <div class="fname">Enviar Imagem</div>
+    <input type="button" value="IMAGE" onClick="window.location='group.image.php';">
+  </form>
+</div>
+<div class="container">
+    <div class="fname">Enviar Vídeo</div>
+    <input type="button" value="VIDEO" onClick="window.location='group.video.php';">
+  </form>
+</div>
+<div class="container">
+    <div class="fname">Enviar Áudio</div>
+    <input type="button" value="AUDIO" onClick="window.location='group.audio.php';">
+  </form>
+</div>
+<div class="container">
+    <div class="fname">Enviar Documento</div>
+    <input type="button" value="DOCUMENT" onClick="window.location='group.document.php';">
+  </form>
+</div>
+
 
 
 

@@ -47,6 +47,8 @@ input[type=submit]:hover {
     
     <label for="subject">Texto da mensagem</label>
     <textarea id="text" name="text" placeholder="Definir a mensagem de texto.." style="height:200px"></textarea>
+    <label for="fname">Rodapé do texto (opcional)</label>
+    <input type="text" id="footer" name="footer" value="Rodapé teste" placeholder="Legenda do rodapé">
     
     <hr />
     <label for="fname">Botão 1</label>
@@ -117,7 +119,8 @@ $postParameter = array(//VARIÁVEIS POST DA REQUISICAO
     "fLogin"=>VAR_INSTANCE_LOGIN,
     "ACTION"=>"BUTTONS",
 	"destination"=>$_POST["destination"],
-	"text"=>$_POST["text"]
+	"text"=>$_POST["text"],
+	"footer"=>$_POST["footer"]//opcional
 );
 
 
@@ -131,6 +134,7 @@ if((isset($_POST["botao4"])) and ($_POST["botao4"] != "")){ $ARRAY_BOTTONS[] = a
 //ADICIONAR ARRAY DE BOTÕES NO ARRAR POST DE ENVIO...........................................................
 $postParameter["buttons"] = $ARRAY_BOTTONS;
 
+echo "<br><br><br><b>JSON postParameter:</b><pre>"; print_r(json_encode($postParameter)); echo "</pre>";
 //url-ify the data for the POST..............................................................................
 $fields_string = http_build_query($postParameter);
 //INFORMAÇÕES DO cURL PHP >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -171,7 +175,7 @@ echo "<br><br><br><b>STATUS DA REQUISIÇÃO:</b><pre>"; print_r($httpcode); echo
 
 
 //imprimir dados de resposta da API........................................................................................
-echo "<br><br><br><b>DADOS DE RESPOSTA DA REQUISIÇÃO:</b><pre>"; print_r($curlResponse); echo "</pre>";
+echo "<br><br><br><b>DADOS DE RESPOSTA DA REQUISIÇÃO:</b><pre>"; print_r($arrayResponse); echo "</pre>";
 
 
 
@@ -208,7 +212,6 @@ if($arrayResponse["isValid"] == "true"){
 
 }//if(isset($_POST["destination"])){
 //POST PARA ENVIO DOS DADOS.................................................................................................................................................
-
 
 
 

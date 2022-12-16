@@ -1,4 +1,4 @@
-<?php // Genneration - 01-11-2022
+<?php // Albert Faisher - faisher@gmail.com - 01-11-2022
 //INCLUDES DE CONTROLE --->>>
 include "inc/globalVars.php";//vars padrao
 //INCLUDES DE CONTROLE ---<<<
@@ -47,6 +47,8 @@ input[type=submit]:hover {
     
     <label for="subject">Texto da mensagem</label>
     <textarea id="text" name="text" placeholder="Definir a mensagem de texto.." style="height:200px"></textarea>
+    <label for="fname">Rodapé do texto (opcional)</label>
+    <input type="text" id="footer" name="footer" value="Rodapé teste" placeholder="Legenda do rodapé">
     
     <hr>
     <label for="fname">TÍTULO PARA A LISTA</label>
@@ -120,7 +122,8 @@ $postParameter = array(//VARIÁVEIS POST DA REQUISICAO
     "fLogin"=>VAR_INSTANCE_LOGIN,
     "ACTION"=>"OPTIONS",
 	"destination"=>$_POST["destination"],
-	"text"=>$_POST["text"]
+	"text"=>$_POST["text"],
+	"footer"=>$_POST["footer"]//opcional
 );
 
 

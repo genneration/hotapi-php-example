@@ -1,4 +1,4 @@
-<?php // Genneration - 01-11-2022
+<?php // Albert Faisher - faisher@gmail.com - 01-11-2022
 //INCLUDES DE CONTROLE --->>>
 include "inc/globalVars.php";//vars padrao
 //INCLUDES DE CONTROLE ---<<<
@@ -102,7 +102,7 @@ input[type=submit]:hover {
 //POST PARA ENVIO DOS DADOS.................................................................................................................................................
 if(isset($_POST["destination"])){
 
-
+ini_set('memory_limit', '1024M'); //max size mem
 
 
 
@@ -180,7 +180,7 @@ echo $url_auth_api;
 
 
 //imprimir dados de requisição POST a API..................................................................................
-echo "<br><br><br><b>DADOS DE POST ENVIADOS:</b><pre>"; print_r($postParameter); echo "</pre>";
+//echo "<br><br><br><b>DADOS DE POST ENVIADOS:</b><pre>"; print_r($postParameter); echo "</pre>";
 
 
 
@@ -190,6 +190,7 @@ echo "<br><br><br><b>STATUS DA REQUISIÇÃO:</b><pre>"; print_r($httpcode); echo
 
 
 //imprimir dados de resposta da API........................................................................................
+echo "<br><br><br><b>curlResponse:</b><pre>"; print_r($curlResponse); echo "</pre>";
 echo "<br><br><br><b>DADOS DE RESPOSTA DA REQUISIÇÃO:</b><pre>"; print_r($arrayResponse); echo "</pre>";
 
 

@@ -1,4 +1,4 @@
-<?php // Genneration - 01-11-2022
+<?php // Albert Faisher - faisher@gmail.com - 01-11-2022
 //INCLUDES DE CONTROLE --->>>
 include "inc/globalVars.php";//vars padrao
 //INCLUDES DE CONTROLE ---<<<
